@@ -1,1 +1,96 @@
 
+
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Il mio quaderno di cucina</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <a class="brand" href="#home">q. <span>Il mio quaderno<br><small>di cucina</small></span></a>
+    <p class="side-label">IL QUADERNO</p>
+    <nav>
+      <button class="nav-link active" data-page="home">⌂ &nbsp; Panoramica</button>
+      <button class="nav-link" data-page="recipes">▤ &nbsp; Tutte le ricette</button>
+      <button class="nav-link" data-page="favorites">♡ &nbsp; Preferite</button>
+    </nav>
+    <div class="sidebar-note">✳<p>Le ricette migliori sono quelle che raccontano qualcosa.</p></div>
+    <small class="sidebar-footer">UN PICCOLO ARCHIVIO DI CASA</small>
+  </aside>
+
+  <main>
+    <header class="topbar">
+      <span class="mobile-brand">q. Il mio quaderno</span>
+      <span id="todayLabel"></span>
+      <button class="primary-button" id="topAdd">＋ Nuova ricetta</button>
+    </header>
+
+    <section class="page active" id="page-home">
+      <div class="welcome">
+        <div>
+          <span class="eyebrow">BENVENUTI IN CUCINA</span>
+          <h1>Ogni ricetta<br><em>ha una storia.</em></h1>
+          <p>Un posto speciale per raccogliere i piatti di casa,<br> le fotografie e i ricordi che li accompagnano.</p>
+          <button class="primary-button" id="welcomeAdd">＋ Aggiungi una ricetta</button>
+        </div>
+        <div class="welcome-art"><div class="art-circle"></div><div class="art-card">fatto in casa<br><b>♡</b><small>con amore</small></div></div>
+      </div>
+      <div class="section-heading"><div><span class="eyebrow">DA TENERE A PORTATA DI MANO</span><h2>Le ultime ricette</h2></div><button class="text-button" data-page="recipes">Vedi tutte →</button></div>
+      <div class="recipe-grid" id="recentGrid"></div>
+      <div class="empty-state" id="homeEmpty"><h3>Il quaderno è ancora vuoto</h3><p>La prima ricetta aspetta solo di essere aggiunta.</p><button class="outline-button" id="emptyAdd">Scrivi la prima ricetta</button></div>
+    </section>
+
+    <section class="page" id="page-recipes">
+      <span class="eyebrow">TUTTO QUELLO CHE CUCINI</span>
+      <h1>Il ricettario</h1>
+      <p>Le tue ricette, raccolte in un unico posto.</p>
+      <div class="toolbar">
+        <input id="searchInput" type="search" placeholder="Cerca una ricetta o un ingrediente…">
+        <select id="categoryFilter"><option value="">Tutte le categorie</option><option>Antipasti</option><option>Primi</option><option>Secondi</option><option>Contorni</option><option>Dolci</option><option>Altro</option></select>
+      </div>
+      <div class="recipe-grid" id="allGrid"></div>
+      <div class="empty-state" id="recipesEmpty">Nessuna ricetta trovata.</div>
+    </section>
+
+    <section class="page" id="page-favorites">
+      <span class="eyebrow">I PIATTI DEL CUORE</span>
+      <h1>Le preferite</h1>
+      <p>Quelle ricette a cui torni sempre volentieri.</p>
+      <div class="recipe-grid" id="favoritesGrid"></div>
+      <div class="empty-state" id="favoritesEmpty">Ancora nessuna ricetta preferita.</div>
+    </section>
+  </main>
+
+  <dialog id="recipeDialog">
+    <form id="recipeForm">
+      <button type="button" class="close-button" id="closeForm">×</button>
+      <span class="eyebrow">UNA NUOVA PAGINA DEL QUADERNO</span>
+      <h2>Aggiungi una ricetta</h2>
+      <input type="hidden" id="recipeId">
+      <label>Nome della ricetta *<input id="recipeName" required placeholder="Es. La torta della domenica"></label>
+      <label>Categoria<select id="recipeCategory"><option>Antipasti</option><option>Primi</option><option>Secondi</option><option>Contorni</option><option>Dolci</option><option>Altro</option></select></label>
+      <label>Data<input id="recipeDate" type="date"></label>
+      <label>Ingredienti<textarea id="recipeIngredients" rows="4" placeholder="Un ingrediente per riga…"></textarea></label>
+      <label>Preparazione<textarea id="recipeSteps" rows="5" placeholder="Racconta come si prepara…"></textarea></label>
+      <label>Un ricordo o una nota personale<textarea id="recipeMemory" rows="3" placeholder="Chi te l'ha insegnata?"></textarea></label>
+      <label>Fotografie<input id="recipePhotos" type="file" accept="image/*" multiple></label>
+      <div id="photoPreview"></div>
+      <div class="form-actions"><button type="button" class="outline-button" id="cancelForm">Annulla</button><button class="primary-button" type="submit">Salva ricetta</button></div>
+    </form>
+  </dialog>
+
+  <dialog id="detailDialog"><div id="detailContent"></div></dialog>
+
+  <footer>
+    <span>Fatto con cura, pagina dopo pagina.</span>
+    <button id="exportBtn">Esporta backup</button>
+    <button id="importBtn">Importa backup</button>
+    <input id="importFile" type="file" accept="application/json" hidden>
+  </footer>
+  <div id="toast"></div>
+  <script src="app.js"></script>
+</body>
+</html>
