@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -30,17 +28,32 @@
 
     <section class="page active" id="page-home">
       <div class="welcome">
-        <div>
+        <div class="welcome-copy">
           <span class="eyebrow">BENVENUTI IN CUCINA</span>
           <h1>Ogni ricetta<br><em>ha una storia.</em></h1>
-          <p>Un posto speciale per raccogliere i piatti di casa,<br> le fotografie e i ricordi che li accompagnano.</p>
+          <p>Un posto speciale per raccogliere i piatti di casa, le fotografie e i ricordi che li accompagnano.</p>
           <button class="primary-button" id="welcomeAdd">＋ Aggiungi una ricetta</button>
         </div>
-        <div class="welcome-art"><div class="art-circle"></div><div class="art-card">fatto in casa<br><b>♡</b><small>con amore</small></div></div>
+        <div class="welcome-art" aria-hidden="true">
+          <div class="art-circle"></div>
+          <div class="art-card">fatto in casa<br><b>♡</b><small>con amore</small></div>
+        </div>
       </div>
-      <div class="section-heading"><div><span class="eyebrow">DA TENERE A PORTATA DI MANO</span><h2>Le ultime ricette</h2></div><button class="text-button" data-page="recipes">Vedi tutte →</button></div>
+
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">DA TENERE A PORTATA DI MANO</span>
+          <h2>Le ultime ricette</h2>
+        </div>
+        <button class="text-button" data-page="recipes">Vedi tutte →</button>
+      </div>
+
       <div class="recipe-grid" id="recentGrid"></div>
-      <div class="empty-state" id="homeEmpty"><h3>Il quaderno è ancora vuoto</h3><p>La prima ricetta aspetta solo di essere aggiunta.</p><button class="outline-button" id="emptyAdd">Scrivi la prima ricetta</button></div>
+      <div class="empty-state" id="homeEmpty">
+        <h3>Il quaderno è ancora vuoto</h3>
+        <p>La prima ricetta aspetta solo di essere aggiunta.</p>
+        <button class="outline-button" id="emptyAdd">Scrivi la prima ricetta</button>
+      </div>
     </section>
 
     <section class="page" id="page-recipes">
@@ -49,7 +62,15 @@
       <p>Le tue ricette, raccolte in un unico posto.</p>
       <div class="toolbar">
         <input id="searchInput" type="search" placeholder="Cerca una ricetta o un ingrediente…">
-        <select id="categoryFilter"><option value="">Tutte le categorie</option><option>Antipasti</option><option>Primi</option><option>Secondi</option><option>Contorni</option><option>Dolci</option><option>Altro</option></select>
+        <select id="categoryFilter">
+          <option value="">Tutte le categorie</option>
+          <option>Antipasti</option>
+          <option>Primi</option>
+          <option>Secondi</option>
+          <option>Contorni</option>
+          <option>Dolci</option>
+          <option>Altro</option>
+        </select>
       </div>
       <div class="recipe-grid" id="allGrid"></div>
       <div class="empty-state" id="recipesEmpty">Nessuna ricetta trovata.</div>
