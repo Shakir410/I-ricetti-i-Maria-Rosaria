@@ -3,40 +3,128 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Il mio quaderno di cucina</title>
+  <meta name="theme-color" content="#62765c">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="I Ricetti I Maria Rosaria">
+  <title>I Ricetti I Maria Rosaria</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" type="image/svg+xml" href="assets/icons/app-icon.svg">
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <svg class="icon-definitions" aria-hidden="true" focusable="false">
+    <symbol id="icon-arrow-left" viewBox="0 0 24 24">
+      <path d="M19 12H5m7 7-7-7 7-7" />
+    </symbol>
+    <symbol id="icon-pages" viewBox="0 0 24 24">
+      <path d="M8 3h12v15H8zM4 7v14h12" />
+      <path d="M11 7h6m-6 4h6m-6 4h3" />
+    </symbol>
+    <symbol id="icon-chevron-left" viewBox="0 0 24 24">
+      <path d="m15 18-6-6 6-6" />
+    </symbol>
+    <symbol id="icon-chevron-right" viewBox="0 0 24 24">
+      <path d="m9 18 6-6-6-6" />
+    </symbol>
+    <symbol id="icon-pen" viewBox="0 0 24 24">
+      <path d="m15 5 4 4M4 20l4-.8L20 7a2.1 2.1 0 0 0-3-3L5 16z" />
+    </symbol>
+    <symbol id="icon-highlighter" viewBox="0 0 24 24">
+      <path d="m4 15 9-9 6 6-9 9H4zM13 6l3-3 6 6-3 3M4 21h16" />
+    </symbol>
+    <symbol id="icon-eraser" viewBox="0 0 24 24">
+      <path d="m7 21-4-4a2 2 0 0 1 0-3l9-9a2 2 0 0 1 3 0l6 6a2 2 0 0 1 0 3l-7 7H7zM11 21l6-6" />
+    </symbol>
+    <symbol id="icon-paper" viewBox="0 0 24 24">
+      <path d="M6 3h12v18H6zM9 8h6m-6 4h6m-6 4h6" />
+    </symbol>
+    <symbol id="icon-grid" viewBox="0 0 24 24">
+      <path d="M6 3h12v18H6zM10 3v18m4-18v18M6 9h12m-12 6h12" />
+    </symbol>
+    <symbol id="icon-clear" viewBox="0 0 24 24">
+      <path d="M5 5h14v14H5zM8 8l8 8m0-8-8 8" />
+    </symbol>
+    <symbol id="icon-trash" viewBox="0 0 24 24">
+      <path d="M4 7h16m-10 4v6m4-6v6M6 7l1 14h10l1-14M9 7V4h6v3" />
+    </symbol>
+    <symbol id="icon-page-plus" viewBox="0 0 24 24">
+      <path d="M13 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V10zM13 3v7h7m-8 3v7m-3.5-3.5h7" />
+    </symbol>
+    <symbol id="icon-check" viewBox="0 0 24 24">
+      <path d="m5 12 4 4L19 6" />
+    </symbol>
+  </svg>
   <aside class="sidebar">
-    <a class="brand" href="#home">q. <span>Il mio quaderno<br><small>di cucina</small></span></a>
     <p class="side-label">IL QUADERNO</p>
     <nav>
-      <button class="nav-link active" data-page="home">⌂ &nbsp; Panoramica</button>
-      <button class="nav-link" data-page="recipes">▤ &nbsp; Tutte le ricette</button>
-      <button class="nav-link" data-page="favorites">♡ &nbsp; Preferite</button>
+      <button class="nav-link active" data-page="home"><span class="nav-icon">⌂</span>Panoramica</button>
+      <button class="nav-link" data-page="recipes"><span class="nav-icon">▤</span>Tutte le ricette</button>
+      <button class="nav-link" data-page="favorites"><span class="nav-icon">♡</span>Preferite</button>
+      <button class="nav-link" data-page="diary"><span class="nav-icon">✎</span>Diario</button>
     </nav>
-    <div class="sidebar-note">✳<p>Le ricette migliori sono quelle che raccontano qualcosa.</p></div>
+    <div class="sidebar-note">
+      <span class="note-label">PENSIERO DEL GIORNO</span>
+      <p id="sidebarQuote">Ogni grande piatto nasce da un piccolo gesto.</p>
+    </div>
     <small class="sidebar-footer">UN PICCOLO ARCHIVIO DI CASA</small>
   </aside>
+  <nav class="mobile-nav" aria-label="Navigazione principale">
+    <button class="mobile-nav-link active" data-page="home"><span class="nav-icon">⌂</span>Home</button>
+    <button class="mobile-nav-link" data-page="recipes"><span class="nav-icon">▤</span>Ricette</button>
+    <button class="mobile-nav-link" data-page="favorites"><span class="nav-icon">♡</span>Preferite</button>
+    <button class="mobile-nav-link" data-page="diary"><span class="nav-icon">✎</span>Diario</button>
+  </nav>
 
   <main>
     <header class="topbar">
-      <span class="mobile-brand">q. Il mio quaderno</span>
       <span id="todayLabel"></span>
-      <button class="primary-button" id="topAdd">＋ Nuova ricetta</button>
+      <button class="primary-button" id="topAdd"><span class="button-icon">＋</span> Nuova ricetta</button>
     </header>
 
     <section class="page active" id="page-home">
       <div class="welcome">
         <div class="welcome-copy">
-          <span class="eyebrow">BENVENUTI IN CUCINA</span>
-          <h1>Ogni ricetta<br><em>ha una storia.</em></h1>
-          <p>Un posto speciale per raccogliere i piatti di casa, le fotografie e i ricordi che li accompagnano.</p>
-          <button class="primary-button" id="welcomeAdd">＋ Aggiungi una ricetta</button>
+          <span class="eyebrow">IL TUO SPAZIO IN CUCINA</span>
+          <h1>Idee buone,<br><em>ogni giorno.</em></h1>
+          <p>Ricette, sapori e appunti di cucina: tutto quello che ti serve, a portata di mano.</p>
+          <button class="primary-button" id="welcomeAdd"><span class="button-icon">＋</span> Aggiungi una ricetta</button>
         </div>
         <div class="welcome-art" aria-hidden="true">
           <div class="art-circle"></div>
-          <div class="art-card">fatto in casa<br><b>♡</b><small>con amore</small></div>
+          <div class="art-card">fatto con<br><b>gusto</b><small>ogni giorno</small></div>
+        </div>
+      </div>
+
+      <div class="shortcut-section">
+        <div class="shortcut-heading">
+          <span class="eyebrow">ACCESSO RAPIDO</span>
+          <h2>Da dove cominciamo?</h2>
+        </div>
+        <div class="home-shortcuts">
+          <button class="shortcut-card" data-page="recipes">
+            <span class="shortcut-icon">▤</span>
+            <span class="shortcut-copy"><strong>Ricettario</strong><small>Cerca un piatto o un ingrediente</small></span>
+            <span class="shortcut-count" id="recipeCount">0</span>
+            <span class="shortcut-arrow">↗</span>
+          </button>
+          <button class="shortcut-card" data-page="favorites">
+            <span class="shortcut-icon">♡</span>
+            <span class="shortcut-copy"><strong>Preferite</strong><small>I piatti che ami di più</small></span>
+            <span class="shortcut-count" id="favoriteCount">0</span>
+            <span class="shortcut-arrow">↗</span>
+          </button>
+          <button class="shortcut-card" data-page="diary">
+            <span class="shortcut-icon">✎</span>
+            <span class="shortcut-copy"><strong>Diario</strong><small>Quaderni, pagine e disegni</small></span>
+            <span class="shortcut-count" id="diaryCount">0</span>
+            <span class="shortcut-arrow">↗</span>
+          </button>
+          <button class="shortcut-card shortcut-card-accent" id="shortcutAdd">
+            <span class="shortcut-icon">＋</span>
+            <span class="shortcut-copy"><strong>Nuova ricetta</strong><small>Salva una nuova idea</small></span>
+            <span class="shortcut-arrow">↗</span>
+          </button>
         </div>
       </div>
 
@@ -45,7 +133,7 @@
           <span class="eyebrow">DA TENERE A PORTATA DI MANO</span>
           <h2>Le ultime ricette</h2>
         </div>
-        <button class="text-button" data-page="recipes">Vedi tutte →</button>
+        <button class="text-button" data-page="recipes">Vedi tutte <span class="button-icon">→</span></button>
       </div>
 
       <div class="recipe-grid" id="recentGrid"></div>
@@ -83,7 +171,116 @@
       <div class="recipe-grid" id="favoritesGrid"></div>
       <div class="empty-state" id="favoritesEmpty">Ancora nessuna ricetta preferita.</div>
     </section>
+
+    <section class="page" id="page-diary">
+      <span class="eyebrow">IDEE, PROVE E ISPIRAZIONI</span>
+      <h1>Il diario di cucina</h1>
+      <p>Apri un quaderno, riempilo di pagine e lascia spazio alle tue idee, a parole o a mano libera.</p>
+      <div id="diaryShelfView">
+        <div class="diary-shelf-heading">
+          <div>
+            <span class="eyebrow">LA TUA RACCOLTA</span>
+            <h2>I miei quaderni</h2>
+          </div>
+          <button type="button" class="primary-button" id="showNotebookForm"><span class="button-icon">＋</span> Crea un quaderno</button>
+        </div>
+        <form id="notebookForm" class="notebook-create-form" autocomplete="off" hidden>
+          <label for="newNotebookName">Come vuoi chiamare il tuo quaderno?</label>
+          <div class="notebook-create-fields">
+            <input id="newNotebookName" name="new-notebook-name" autocomplete="off" maxlength="80" placeholder="Es. Idee di stagione" required>
+            <label class="notebook-paper-choice" for="notebookPaperStyle">
+              <span>Tipo di foglio</span>
+              <select id="notebookPaperStyle">
+                <option value="ruled">A righe</option>
+                <option value="grid">A quadretti</option>
+              </select>
+            </label>
+            <label class="notebook-cover-color" for="notebookCoverColor">
+              <span>Colore della copertina</span>
+              <input id="notebookCoverColor" type="color" value="#e5e3d1">
+            </label>
+            <button type="button" class="outline-button" id="cancelNotebookForm">Annulla</button>
+            <button class="primary-button" type="submit">Crea quaderno</button>
+          </div>
+        </form>
+        <div class="notebook-grid" id="notebookGrid"></div>
+        <div class="empty-state" id="diaryShelfEmpty">
+          <h3>Il tuo diario comincia da qui</h3>
+          <p>Crea il primo quaderno e aggiungi tutte le pagine che vuoi.</p>
+        </div>
+      </div>
+
+      <div id="diaryNotebookView" hidden>
+        <div class="notebook-toolbar">
+          <div class="notebook-toolbar-group">
+            <button type="button" class="drawing-tool" id="backToNotebooks" aria-label="Esci dal quaderno" title="Esci"><svg class="toolbar-icon"><use href="#icon-arrow-left"></use></svg></button>
+            <button type="button" class="drawing-tool" id="togglePageIndex" aria-label="Mostra le pagine" title="Pagine"><svg class="toolbar-icon"><use href="#icon-pages"></use></svg></button>
+          </div>
+          <div class="notebook-toolbar-group notebook-page-navigation">
+            <button type="button" class="drawing-tool" id="previousNotebookPage" aria-label="Pagina precedente" title="Pagina precedente"><svg class="toolbar-icon"><use href="#icon-chevron-left"></use></svg></button>
+            <span id="notebookPagePosition"></span>
+            <button type="button" class="drawing-tool" id="nextNotebookPage" aria-label="Pagina successiva" title="Pagina successiva"><svg class="toolbar-icon"><use href="#icon-chevron-right"></use></svg></button>
+          </div>
+          <div class="notebook-toolbar-group notebook-main-tools" role="toolbar" aria-label="Strumenti del quaderno">
+            <button type="button" class="drawing-tool" data-drawing-mode="text" aria-label="Scrivi con la tastiera" title="Scrittura con la tastiera"><span class="toolbar-letter">T</span></button>
+            <button type="button" class="drawing-tool active" data-drawing-mode="pen" aria-label="Penna" title="Penna"><svg class="toolbar-icon"><use href="#icon-pen"></use></svg></button>
+            <button type="button" class="drawing-tool" data-drawing-mode="highlighter" aria-label="Evidenziatore" title="Evidenziatore"><svg class="toolbar-icon"><use href="#icon-highlighter"></use></svg></button>
+            <button type="button" class="drawing-tool" data-drawing-mode="eraser" aria-label="Gomma" title="Gomma"><svg class="toolbar-icon"><use href="#icon-eraser"></use></svg></button>
+            <label class="drawing-color-label" aria-label="Colore della penna" title="Colore"><input id="diaryPenColor" type="color" value="#303a31"></label>
+            <button type="button" class="drawing-tool" id="togglePaperStyle" aria-label="Cambia tipo di foglio" title="Foglio a righe"><svg class="toolbar-icon"><use href="#icon-paper"></use></svg></button>
+            <select id="diaryPaperStyle" aria-label="Tipo di foglio" hidden>
+              <option value="ruled">Righe</option>
+              <option value="grid">Quadretti</option>
+              <option value="blank">Bianco</option>
+            </select>
+            <button type="button" class="drawing-tool" id="clearDiaryCanvas" aria-label="Cancella il disegno" title="Cancella il disegno"><svg class="toolbar-icon"><use href="#icon-clear"></use></svg></button>
+            <button type="button" class="drawing-tool" id="deleteNotebookPage" aria-label="Elimina la pagina" title="Elimina pagina"><svg class="toolbar-icon"><use href="#icon-trash"></use></svg></button>
+            <button type="button" class="drawing-tool" id="addNotebookPage" aria-label="Aggiungi pagina" title="Nuova pagina"><svg class="toolbar-icon"><use href="#icon-page-plus"></use></svg></button>
+            <button type="submit" class="drawing-tool" form="notebookPageForm" aria-label="Salva la pagina" title="Salva"><svg class="toolbar-icon"><use href="#icon-check"></use></svg></button>
+          </div>
+        </div>
+        <div class="notebook-layout">
+          <aside class="notebook-page-index">
+            <div class="page-index-heading">
+              <span class="eyebrow">PAGINE</span>
+              <span id="notebookPageCount"></span>
+            </div>
+            <div class="notebook-page-list" id="notebookPageList"></div>
+          </aside>
+          <form id="notebookPageForm" class="notebook-page" hidden>
+            <div class="notebook-paper">
+              <input type="hidden" id="notebookPageId">
+              <div class="page-fields">
+                <input id="notebookPageTitle" maxlength="100" placeholder="Titolo della pagina" aria-label="Titolo della pagina" required>
+                <input id="notebookPageDate" type="date" aria-label="Data della pagina">
+              </div>
+              <div class="notebook-writing-area" data-paper-style="ruled">
+                <textarea id="notebookPageText" rows="4" placeholder="Scegli una modalità e scrivi qui…" aria-label="Appunto scritto con la tastiera" tabindex="-1" aria-hidden="true"></textarea>
+                <canvas id="diaryCanvas" width="1600" height="900" aria-label="Area di disegno per scrivere o disegnare a mano libera"></canvas>
+              </div>
+            </div>
+          </form>
+          <div class="empty-state notebook-no-pages" id="notebookNoPages" hidden>
+            <h3>Questo quaderno è ancora vuoto</h3>
+            <p>Aggiungi una pagina per iniziare a scrivere o disegnare.</p>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
+
+  <dialog id="categoryDialog">
+    <div class="category-picker">
+      <button type="button" class="close-button" id="closeCategoryPicker" aria-label="Chiudi">×</button>
+      <span class="eyebrow">NUOVA RICETTA</span>
+      <h2>Che cosa prepari?</h2>
+      <p>Scegli il tipo di piatto: poi potrai aggiungere ingredienti, passaggi e una foto.</p>
+      <div class="category-grid" id="categoryGrid"></div>
+      <div class="form-actions">
+        <button type="button" class="outline-button" id="cancelCategoryPicker">Annulla</button>
+      </div>
+    </div>
+  </dialog>
 
   <dialog id="recipeDialog">
     <form id="recipeForm">
@@ -97,13 +294,28 @@
       <label>Ingredienti<textarea id="recipeIngredients" rows="4" placeholder="Un ingrediente per riga…"></textarea></label>
       <label>Preparazione<textarea id="recipeSteps" rows="5" placeholder="Racconta come si prepara…"></textarea></label>
       <label>Un ricordo o una nota personale<textarea id="recipeMemory" rows="3" placeholder="Chi te l'ha insegnata?"></textarea></label>
-      <label>Fotografie<input id="recipePhotos" type="file" accept="image/*" multiple></label>
+      <div class="photo-picker-field">
+        <span class="photo-picker-label">Fotografie, fino a 8</span>
+        <input id="recipePhotos" class="photo-picker-input" type="file" accept="image/*" multiple aria-describedby="photoHelp">
+        <label class="photo-picker-button" for="recipePhotos">Scegli foto</label>
+        <small class="photo-help" id="photoHelp">Scegli dalla galleria del telefono o dai file del dispositivo. Puoi aggiungere più immagini alla stessa ricetta.</small>
+      </div>
       <div id="photoPreview"></div>
       <div class="form-actions"><button type="button" class="outline-button" id="cancelForm">Annulla</button><button class="primary-button" type="submit">Salva ricetta</button></div>
     </form>
   </dialog>
 
-  <dialog id="detailDialog"><div id="detailContent"></div></dialog>
+  <dialog id="detailDialog">
+    <button type="button" class="close-button detail-close" id="closeDetail" aria-label="Chiudi ricetta" title="Chiudi">×</button>
+    <div id="detailContent"></div>
+  </dialog>
+  <dialog id="photoViewerDialog" aria-label="Galleria fotografica">
+    <button type="button" class="photo-viewer-close" id="closePhotoViewer" aria-label="Chiudi foto" title="Chiudi">×</button>
+    <button type="button" class="photo-viewer-nav photo-viewer-prev" id="previousPhoto" aria-label="Foto precedente" title="Foto precedente">‹</button>
+    <figure><img id="photoViewerImage" alt=""></figure>
+    <button type="button" class="photo-viewer-nav photo-viewer-next" id="nextPhoto" aria-label="Foto successiva" title="Foto successiva">›</button>
+    <span id="photoViewerCount"></span>
+  </dialog>
 
   <footer>
     <span>Fatto con cura, pagina dopo pagina.</span>
